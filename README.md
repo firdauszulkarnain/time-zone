@@ -1,5 +1,7 @@
-E-Commerce Jam Tangan 
+# E-Commerce Jam Tangan 
 
-Back-End: Framework CodeIgniter 3
-Front End Template: - SB Admin 2
-										- E-Commerce Template By Colorlib
+# Back-End
+Framework CodeIgniter 3
+# Front End 
+- SB Admin 2 Template By Bootstrap
+- E-Commerce Template By Colorlib
