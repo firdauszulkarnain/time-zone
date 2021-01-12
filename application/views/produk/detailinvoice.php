@@ -92,7 +92,7 @@
                                     </tr>
                                     <tr>
                                         <td><b>Total Harga</b></td>
-                                        <td><?= $invoice['subtotal']; ?></td>
+                                        <td>Rp. <?= number_format($invoice['subtotal'], 0, ',', '.') ?></td>
                                     </tr>
                                 </tbody>
                             </table>

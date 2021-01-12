@@ -25,7 +25,7 @@
                                     <tr>
                                         <th scope="row"><?= 1 + $start; ?></th>
                                         <td><?= $jm['nama']; ?></td>
-                                        <td><?= $jm['harga']; ?></td>
+                                        <td>Rp. <?= number_format($jm['harga'], 0, ',', '.') ?></td>
                                         <td><?= $jm['gambar']; ?></td>
                                         <td>
                                             <!-- DELETE -->

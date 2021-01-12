@@ -27,7 +27,7 @@
                                         <th scope="row"><?= 1 + $start; ?></th>
                                         <td><?= $iv['namajam']; ?></td>
                                         <td><?= $iv['qty']; ?></td>
-                                        <td><?= $iv['total_harga']; ?></td>
+                                        <td>Rp. <?= number_format($iv['total_harga'], 0, ',', '.') ?></td>
                                         <td><?= $iv['tgl_pemesanan']; ?></td>
                                         <td><?= $iv['tgl_selesai']; ?></td>
                                         <td>

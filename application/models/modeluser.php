@@ -250,7 +250,7 @@ class modeluser extends CI_Model
         $query = "SELECT `pesanan`.*, `produk_jam`.`nama` as namajam, `produk_jam`.`id_produk` as idproduk
         FROM `pesanan` JOIN `produk_jam`
         ON `pesanan`.`barang_id` = `produk_jam`.`id_produk`
-        WHERE `pesanan`.`user_id` = $user_id ORDER BY `pesanan`.`id` DESC";
+        WHERE `pesanan`.`user_id` = $user_id AND `pesanan`.`status` != 'Selesai' ORDER BY `pesanan`.`id` DESC";
         return $this->db->query($query)->result_array();
     }
 

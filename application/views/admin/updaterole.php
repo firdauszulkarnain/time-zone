@@ -14,7 +14,7 @@
                             <small class="form-text text-danger"><?= form_error('role'); ?></small>
                         </div>
                         <button type="submit" class="btn btn-primary float-right">Update</button>
-                        <a href="<?= base_url('menu'); ?>" class="btn btn-danger">Cancel</a>
+                        <a href="<?= base_url('admin/role'); ?>" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>

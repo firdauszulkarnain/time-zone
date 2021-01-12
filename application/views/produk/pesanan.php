@@ -27,7 +27,7 @@
                                         <form action="<?= base_url(); ?>produk/setpesanan/<?= $ps['id']; ?> " method="POST">
                                             <th scope="row"><?= 1 + $start; ?></th>
                                             <td><?= $ps['namajam']; ?></td>
-                                            <td><?= $ps['subtotal']; ?></td>
+                                            <td>Rp. <?= number_format($ps['subtotal'], 0, ',', '.') ?></td>
                                             <td><?= $ps['qty']; ?></td>
                                             <td>
                                                 <div class="form-group">
