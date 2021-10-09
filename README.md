@@ -7,4 +7,4 @@ Framework CodeIgniter 3
 - E-Commerce Template By Colorlib
 
 # WEBSITE
-<http://time-zone.great-site.net/>
+https://time-zone.great-site.net/
