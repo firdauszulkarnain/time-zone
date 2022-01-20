@@ -14,7 +14,7 @@ class Produk extends CI_Controller
         $this->load->library('pagination');
         // Halaman Pagination
         $config['total_rows'] = $this->modeluser->hitungdataprodukjamuser($user_id);
-        $config['base_url'] = 'http://localhost/timezone/produk/index';
+        $config['base_url'] = 'http://localhost/time-zone/produk/index';
         // Total Baris Pagination
         $config['per_page'] = 3;
 
@@ -112,7 +112,6 @@ class Produk extends CI_Controller
                 'min_length' => 'Terjadi Kesalahan Input Harga'
             ]
         );
-        // $this->form_validation->set_rules('gambar', 'Gambar', 'trim|required', ['required' => 'Gambar Produk Harus Diisi']);
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required', ['required' => 'Deskripsi Harus Diisi']);
 
         if ($this->form_validation->run() == false) {
@@ -165,7 +164,7 @@ class Produk extends CI_Controller
         $this->load->library('pagination');
         // Halaman Pagination
         $config['total_rows'] = $this->modeluser->getdatapesanan($agen_id);
-        $config['base_url'] = 'http://localhost/timezone/produk/pesanan';
+        $config['base_url'] = 'http://localhost/time-zone/produk/pesanan';
         // Total Baris Pagination
         $config['per_page'] = 3;
 
@@ -227,7 +226,7 @@ class Produk extends CI_Controller
         $this->load->library('pagination');
         // Halaman Pagination
         $config['total_rows'] = $this->modeluser->hitunginvoice($agen_id);
-        $config['base_url'] = 'http://localhost/timezone/produk/invoice';
+        $config['base_url'] = 'http://localhost/time-zone/produk/invoice';
         // Total Baris Pagination
         $config['per_page'] = 3;
 

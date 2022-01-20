@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         <div class="col-lg-10">
             <?= form_open_multipart('user/edit'); ?>
             <div class="card">
@@ -48,7 +48,7 @@
 
                     <div class="form-group row">
                         <div class="col-sm-10 offset-sm-2 mt-3">
-                            <button type="submit" class="btn btn-primary float-right">Edit</button>
+                            <button type="submit" class="btn btn-primary float-right px-5">Simpan</button>
                         </div>
                     </div>
                 </div>

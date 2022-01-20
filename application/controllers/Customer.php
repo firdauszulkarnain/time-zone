@@ -8,11 +8,13 @@ class Customer extends CI_Controller
     {
         parent::__construct();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $role = $data['user']['role_id'];
-        if ($role == 1) {
-            redirect('admin');
-        } else if ($role == 2) {
-            redirect('user');
+        if ($data['user'] != null) {
+            $role = $data['user']['role_id'];
+            if ($role == 1) {
+                redirect('admin');
+            } else if ($role == 2) {
+                redirect('user');
+            }
         }
     }
     public function index()
@@ -24,7 +26,7 @@ class Customer extends CI_Controller
         $this->load->library('pagination');
         // Halaman Pagination
         $config['total_rows'] = $this->modeluser->hitungdataprodukjam();
-        $config['base_url'] = 'http://localhost/timezone/customer/index';
+        $config['base_url'] = 'http://localhost/time-zone/customer/index';
         // Total Baris Pagination
         $config['per_page'] = 6;
 
@@ -116,7 +118,7 @@ class Customer extends CI_Controller
         $this->load->library('pagination');
         // Halaman Pagination
         $config['total_rows'] = $this->modeluser->hitungdataprodukjam();
-        $config['base_url'] = 'http://localhost/timezone/customer/shop';
+        $config['base_url'] = 'http://localhost/time-zone/customer/shop';
         // Total Baris Pagination
         $config['per_page'] = 6;
 

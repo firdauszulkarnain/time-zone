@@ -9,10 +9,10 @@
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <?= $this->session->flashdata('pesan'); ?>
-            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahmenu">Tambah Menu Baru</a>
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahmenu">Tambah Menu Baru</a>
+                    <table class="table table-hover table-striped table-bordered text-center">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -38,12 +38,13 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <div class="mt-3 float-right">
+                        <?= $this->pagination->create_links(); ?>
+                    </div>
                 </div>
             </div>
 
-            <div class="mt-3">
-                <?= $this->pagination->create_links(); ?>
-            </div>
+
         </div>
     </div>
 

@@ -2,17 +2,18 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800 mb-5"><?= $title; ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
     <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
 
             <?= form_error('role', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <?= $this->session->flashdata('pesan'); ?>
-            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahrole">Tambah Role Baru</a>
+
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahrole">Tambah Role Baru</a>
+                    <table class="table table-hover table-striped table-bordered text-center">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

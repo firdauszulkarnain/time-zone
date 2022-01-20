@@ -28,7 +28,7 @@ class Menu extends CI_Controller
         $this->load->library('pagination');
         // Halaman Pagination
         $config['total_rows'] = $this->modelmenu->hitungdata();
-        $config['base_url'] = 'http://localhost/timezone/menu/index';
+        $config['base_url'] = 'http://localhost/time-zone/menu/index';
         // Total Baris Pagination
         $config['per_page'] = 3;
 
@@ -118,7 +118,7 @@ class Menu extends CI_Controller
         $this->load->library('pagination');
         // Halaman Pagination
         $config['total_rows'] = $this->modelmenu->hitungdatasubmenu();
-        $config['base_url'] = 'http://localhost/timezone/menu/submenu';
+        $config['base_url'] = 'http://localhost/time-zone/menu/submenu';
         // Total Baris Pagination
         $config['per_page'] = 3;
 

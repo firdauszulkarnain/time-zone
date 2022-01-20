@@ -15,11 +15,12 @@
             <?php endif; ?>
 
             <?= $this->session->flashdata('pesan'); ?>
-            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahsubmenu">Tambah Sub Menu Baru</a>
-            <div class="card">
+
+            <div class="card mb-5">
                 <div class="card-body">
+                    <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahsubmenu">Tambah Sub Menu Baru</a>
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover table-striped table-bordered text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -53,12 +54,13 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div class="mt-3 float-right">
+                            <?= $this->pagination->create_links(); ?>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="mt-3">
-                <?= $this->pagination->create_links(); ?>
-            </div>
+
         </div>
     </div>
 

@@ -6,10 +6,10 @@
     <div class="row d-flex justify-content-center">
         <div class="col-lg-12">
             <?= $this->session->flashdata('pesan'); ?>
-            <div class="card">
+            <div class="card py-3">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover table-striped table-bordered text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -26,10 +26,10 @@
                                     <tr>
                                         <form action="<?= base_url(); ?>produk/setpesanan/<?= $ps['id']; ?> " method="POST">
                                             <th scope="row"><?= 1 + $start; ?></th>
-                                            <td><?= $ps['namajam']; ?></td>
-                                            <td>Rp. <?= number_format($ps['subtotal'], 0, ',', '.') ?></td>
-                                            <td><?= $ps['qty']; ?></td>
-                                            <td>
+                                            <td class="align-middle"><?= $ps['namajam']; ?></td>
+                                            <td class="align-middle">Rp. <?= number_format($ps['subtotal'], 0, ',', '.') ?></td>
+                                            <td class="align-middle"><?= $ps['qty']; ?></td>
+                                            <td class="align-middle">
                                                 <div class="form-group">
                                                     <select class="form-control" id="status" name="status">
                                                         <option disabled selected><?= $ps['status']; ?></option>
@@ -46,8 +46,8 @@
                                                     </select>
                                                 </div>
                                             </td>
-                                            <td><?= $ps['catatan']; ?></td>
-                                            <td>
+                                            <td class="align-middle"><?= $ps['catatan']; ?></td>
+                                            <td class="align-middle">
                                                 <a href="<?= base_url(); ?>produk/detailpesanan/<?= $ps['id']; ?>" class="btn btn-warning btn-sm">
                                                     <i class="fas fa-fw fa-info-circle"></i>
                                                 </a>
@@ -61,26 +61,15 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div class="mt-3 float-right">
+                            <?= $this->pagination->create_links(); ?>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="mt-3">
-                <?= $this->pagination->create_links(); ?>
-            </div>
+
         </div>
     </div>
 
 </div>
 </div>
-
-<!-- <div class="form-group">
-    <label for="status"></label>
-    <select class="form-control" id="status">
-        <option disabled selected>Status Lanjut</option>
-        <option value="Sedang Di Kirim">Sedang Di Kirim</option>
-
-        <option disabled selected>Status Lanjut</option>
-        <option value="Selesai">Selesai</option>
-
-    </select>
-</div> -->

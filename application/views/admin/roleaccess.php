@@ -9,7 +9,7 @@
             <h4>Role : <?= $role['role']; ?></h4>
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-striped table-bordered text-center">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

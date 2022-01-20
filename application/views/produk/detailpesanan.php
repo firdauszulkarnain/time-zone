@@ -2,19 +2,18 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800 mb-5"><?= $title; ?></h1>
-    <div class="row d-flex justify-content-center">
-        <div class="col-lg-6">
+    <h1 class="h3 mb-4 text-gray-800 mb-3"><?= $title; ?></h1>
+    <div class="row d-flex justify-content-center mb-5">
+        <div class="col-lg-7">
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">
+                                    <th scope="col" colspan="2">
                                         <h5><b>Data Penerima</b></h5>
                                     </th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,22 +39,22 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="<?= base_url('produk/pesanan'); ?>" class="btn btn-danger">Back</a>
+
                     </div>
                 </div>
             </div>
+            <a href="<?= base_url('produk/pesanan'); ?>" class="btn btn-danger mt-3 px-5">Kembali</a>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">
+                                    <th scope="col" colspan="2">
                                         <h5><b>Data Produk</b></h5>
                                     </th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

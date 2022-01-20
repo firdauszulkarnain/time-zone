@@ -1,11 +1,14 @@
-<!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-lg-11">
+            <div class="card bg-primary py-4">
+                <div class="card-body text-center">
+                    <h2 class="text-light"><b>Selamat Datang Di Admin Dashboard Time Zone</b></h2>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
-<!-- /.container-fluid -->
 
 </div>
-<!-- End of Main Content -->
