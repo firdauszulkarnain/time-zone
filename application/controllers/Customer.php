@@ -101,11 +101,7 @@ class Customer extends CI_Controller
             $this->db->set('notelp', $notelp);
             $this->db->where('email', $email);
             $this->db->update('user');
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Update Profile
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Update Profile');
             redirect('customer/customer_profile');
         }
     }
@@ -258,11 +254,6 @@ class Customer extends CI_Controller
             $this->load->view('template_toko/footer');
         } else {
             $this->modeluser->checkout($id_user);
-            // $this->session->set_flashdata('checkout', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Melakukan Pesanan
-            // <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            //     <span aria-hidden="true">&times;</span>
-            // </button>
-            // </div>');
             $this->cart->destroy();
             redirect('customer/pesanan_customer');
         }

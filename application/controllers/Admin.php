@@ -28,12 +28,9 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['role'] = $this->db->get('user_role')->result_array();
 
-        $this->form_validation->set_rules(
-            'role',
-            'Role',
-            'trim|required',
-            ['required' => 'Nama Role Harus Diisi']
-        );
+        $this->form_validation->set_rules('role', 'Role', 'trim|required', ['required' => 'Nama Role Harus Diisi']);
+
+
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
@@ -42,11 +39,7 @@ class Admin extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->db->insert('user_role', ['role' => $this->input->post('role')]);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Role Berhasil Ditambahkan
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>');
+            $this->session->set_flashdata('pesan', 'Berhasil Tambah User Role');
             redirect('admin/role');
         }
     }
@@ -58,6 +51,8 @@ class Admin extends CI_Controller
         $data['role'] = $this->db->get_where('user_role', ['id_role' => $id])->row_array();
         $this->db->where('id_menu !=', 1);
         $data['menu'] = $this->db->get('user_menu')->result_array();
+
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('template/topbar');
@@ -74,7 +69,6 @@ class Admin extends CI_Controller
             'role_id' => $role_id,
             'menu_id' => $menu_id
         ];
-        // var_dump($data);
 
         $result = $this->db->get_where('user_access_menu', $data);
 
@@ -83,21 +77,13 @@ class Admin extends CI_Controller
         } else {
             $this->db->delete('user_access_menu', $data);
         }
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Access Berhasil Diubah
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>');
+        $this->session->set_flashdata('pesan', 'Behasil Ubah Access Role');
     }
 
     public function hapusrole($id)
     {
         $this->modeluser->hapusrole($id);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Role Berhasil Dihapus
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>');
+        $this->session->set_flashdata('pesan', 'Role Berhasil Dihapus');
         redirect('admin/role');
     }
 
@@ -123,11 +109,7 @@ class Admin extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->modeluser->updaterole($id);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Role Berhasil Diupdate
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Role Berhasil Di Update');
             redirect('admin/role');
         }
     }

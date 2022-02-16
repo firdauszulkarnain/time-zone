@@ -52,6 +52,7 @@ class Produk extends CI_Controller
         );
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required', ['required' => 'Deskripsi Harus Diisi']);
 
+
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
@@ -74,11 +75,7 @@ class Produk extends CI_Controller
             }
 
             $this->modeluser->tambahprodukjam($gambar, $user_id);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"> <strong>Berhasil</strong> Menambahkan Produk Jam Tangan
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Tambah Produk Jam');
             redirect('produk');
         }
     }
@@ -86,11 +83,7 @@ class Produk extends CI_Controller
     public function hapusproduk($id_produk)
     {
         $this->modeluser->hapusproduk($id_produk);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Hapus Produk
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+        $this->session->set_flashdata('pesan', 'Hapus Produk Jam');
         redirect('produk');
     }
 
@@ -146,11 +139,7 @@ class Produk extends CI_Controller
             ];
             $this->db->where('id_produk', $id_produk);
             $this->db->update('produk_jam', $data);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Update produk
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Update Produk Jam');
             redirect('produk');
         }
     }
@@ -201,17 +190,9 @@ class Produk extends CI_Controller
         $status = htmlspecialchars($this->input->post('status', true));
         $data['update'] = $this->modeluser->setpesanan($id, $status);
         if ($status == 'Selesai') {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Pesanan Selesai</strong> Ditambahkan Kedalam Invoice
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Selesaikan Pesanan');
         } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Update Status Pesanan
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Update Status Pesanan');
         }
         redirect('produk/pesanan');
     }

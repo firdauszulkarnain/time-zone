@@ -49,11 +49,7 @@ class Menu extends CI_Controller
         } else {
             //Menambahkan Menu
             $this->db->insert('user_menu', ['menu' => $this->input->post('menu')]);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Menu Berhasil Ditambahkan
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>');
+            $this->session->set_flashdata('pesan', 'Tambahkan Menu');
             redirect('menu');
         }
     }
@@ -62,11 +58,7 @@ class Menu extends CI_Controller
     public function hapusmenu($id)
     {
         $this->modelmenu->hapusmenu($id);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Menu Berhasil Dihapus
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>');
+        $this->session->set_flashdata('pesan', 'Hapus Menu');
         redirect('menu');
     }
 
@@ -77,14 +69,9 @@ class Menu extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get_where('user_menu', ['id_menu' => $id])->row_array();
 
-        $this->form_validation->set_rules(
-            'menu',
-            'Menu',
-            'trim|required',
-            [
-                'required' => 'Nama Menu Harus Diisi'
-            ]
-        );
+        $this->form_validation->set_rules('menu', 'Menu', 'trim|required', ['required' => 'Nama Menu Harus Diisi']);
+
+
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
@@ -93,11 +80,7 @@ class Menu extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->modelmenu->updatemenu($id);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Menu Berhasil Diupdate
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Update Menu');
             redirect('menu');
         }
     }
@@ -138,11 +121,7 @@ class Menu extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->modelmenu->tambahsubmenu();
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"> <strong>Berhasil</strong> Menambahkan Sub Menu
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Tambahkan Sub Menu');
             redirect('menu/submenu');
         }
     }
@@ -151,11 +130,7 @@ class Menu extends CI_Controller
     public function hapussubmenu($id)
     {
         $this->modelmenu->hapussubmenu($id);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Hapus Sub Menu 
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+        $this->session->set_flashdata('pesan', 'Hapus Sub Menu');
         redirect('menu/submenu');
     }
 
@@ -183,11 +158,7 @@ class Menu extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->modelmenu->updatesubmenu($id);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"> <strong>Berhasil</strong> Update Sub Menu
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Update Sub Menu');
             redirect('menu/submenu');
         }
     }

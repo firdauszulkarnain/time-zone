@@ -1,6 +1,7 @@
 <body class="bg-gradient-primary">
     <div class="container">
-
+        <div class="error" data-error="<?= $this->session->flashdata('error'); ?>"></div>
+        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
         <!-- Outer Row -->
         <div class="row justify-content-center">
 

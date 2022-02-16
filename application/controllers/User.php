@@ -79,11 +79,7 @@ class User extends CI_Controller
             $this->db->set('notelp', $notelp);
             $this->db->where('email', $email);
             $this->db->update('user');
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Update Profile
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>');
+            $this->session->set_flashdata('pesan', 'Update Profile');
             redirect('user');
         }
     }
@@ -129,19 +125,11 @@ class User extends CI_Controller
             $password_tersimpan = $data['user']['password'];
             $newpassword = htmlspecialchars($this->input->post('password_baru1', true));
             if (!password_verify($current_password, $password_tersimpan)) {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal</strong> Password Saat Ini Salah
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>');
+                $this->session->set_flashdata('error', 'Password Saat ini Salah');
                 redirect('user/changepassword');
             } else {
                 if ($newpassword == $current_password) {
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Gagal</strong> Password Baru Tidak Boleh Sama Dengan Password Saat Ini
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>');
+                    $this->session->set_flashdata('error', 'Password Baru Tidak Boleh Sama Dengan Password Saat ini');
                     redirect('user/changepassword');
                 } else {
                     $password_hash = password_hash($newpassword, PASSWORD_DEFAULT);
@@ -149,11 +137,7 @@ class User extends CI_Controller
                     $this->db->where('email', $data['user']['email']);
                     $this->db->update('user');
 
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Berhasil</strong> Update Password
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>');
+                    $this->session->set_flashdata('pesan', 'Update Passoord');
                     redirect('user/changepassword');
                 }
             }

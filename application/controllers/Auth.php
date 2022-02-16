@@ -59,19 +59,11 @@ class Auth extends CI_Controller
                     redirect('customer');
                 }
             } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Email Belum Di Aktivasi
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>');
+                $this->session->set_flashdata('error', 'Email Belum Diaktivasi');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Email Belum Terdaftar
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>');
+            $this->session->set_flashdata('pesan', 'Email Bellum Terdaftar');
             redirect('auth');
         }
     }
@@ -126,11 +118,7 @@ class Auth extends CI_Controller
             $this->load->view('template/auth_footer');
         } else {
             $this->modeluser->registrasi($role_id);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Registrasi Berhasil</strong> Silahkan Login
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>');
+            $this->session->set_flashdata('pesan', 'Registrasi Akun, Silahkan Login');
             redirect('auth');
         }
     }
@@ -140,11 +128,7 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Logout Berhasil</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>');
+        $this->session->set_flashdata('pesan', 'Logout Berhasil');
         redirect('/');
     }
 

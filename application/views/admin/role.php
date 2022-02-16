@@ -7,9 +7,6 @@
         <div class="col-lg-8">
 
             <?= form_error('role', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-
-            <?= $this->session->flashdata('pesan'); ?>
-
             <div class="card">
                 <div class="card-body">
                     <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahrole">Tambah Role Baru</a>

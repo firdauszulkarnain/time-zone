@@ -1,3 +1,4 @@
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
 <!--? Popular Items Start -->
 <div class="popular-items section-padding30">
     <div class="container">
