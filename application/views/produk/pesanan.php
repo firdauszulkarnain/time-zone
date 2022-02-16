@@ -9,7 +9,7 @@
             <div class="card py-3">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped table-bordered text-center">
+                        <table class="table table-striped table-bordered text-center dt-responsive nowrap" id="mytabel" width="100%">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -25,8 +25,8 @@
                                 <?php foreach ($pesanan as $ps) : ?>
                                     <tr>
                                         <form action="<?= base_url(); ?>produk/setpesanan/<?= $ps['id']; ?> " method="POST">
-                                            <th scope="row"><?= 1 + $start; ?></th>
-                                            <td class="align-middle"><?= $ps['namajam']; ?></td>
+                                            <th scope="row"></th>
+                                            <td class="align-middle"><?= $ps['nama']; ?></td>
                                             <td class="align-middle">Rp. <?= number_format($ps['subtotal'], 0, ',', '.') ?></td>
                                             <td class="align-middle"><?= $ps['qty']; ?></td>
                                             <td class="align-middle">
@@ -57,13 +57,9 @@
                                             </td>
                                         </form>
                                     </tr>
-                                    <?php $start++; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <div class="mt-3 float-right">
-                            <?= $this->pagination->create_links(); ?>
-                        </div>
                     </div>
                 </div>
             </div>

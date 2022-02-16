@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <a href="<?= base_url('produk/tambahproduk') ?>" class="btn btn-primary mb-3">Tambah Produk Jam Baru</a>
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped table-bordered text-center">
+                        <table class="table table-striped table-bordered text-center dt-responsive nowrap" id="mytabel" width="100%">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -23,7 +23,7 @@
                             <tbody>
                                 <?php foreach ($jamtangan as $jm) : ?>
                                     <tr>
-                                        <th scope="row" class="align-middle"><?= 1 + $start; ?></th>
+                                        <th scope="row" class="align-middle"></th>
                                         <td class="align-middle"><?= $jm['nama']; ?></td>
                                         <td class="align-middle">Rp. <?= number_format($jm['harga'], 0, ',', '.') ?></td>
                                         <td>
@@ -38,13 +38,9 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php $start++; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <div class="mt-3 float-right">
-                            <?= $this->pagination->create_links(); ?>
-                        </div>
                     </div>
                 </div>
             </div>

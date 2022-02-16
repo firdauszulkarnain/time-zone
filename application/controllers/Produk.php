@@ -9,22 +9,8 @@ class Produk extends CI_Controller
         $data['title'] = 'Jam Tangan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $user_id = $data['user']['id_user'];
-        // $data['jamtangan'] =  $this->db->get('produk_jam')->result_array();
+        $data['jamtangan'] = $this->modeluser->getdatajamuser($user_id);
 
-        $this->load->library('pagination');
-        // Halaman Pagination
-        $config['total_rows'] = $this->modeluser->hitungdataprodukjamuser($user_id);
-        $config['base_url'] = 'http://localhost/time-zone/produk/index';
-        // Total Baris Pagination
-        $config['per_page'] = 3;
-
-        // INISIALISASI Pagination
-        $this->pagination->initialize($config);
-        // END INISIALISASI
-
-        $data['start'] = $this->uri->segment(3);
-        $data['jamtangan'] = $this->modeluser->getdatajamuser($config['per_page'], $data['start'], $user_id);
-        // END PAGINATION
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
@@ -148,22 +134,7 @@ class Produk extends CI_Controller
         $data['title'] = 'Pesanan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $agen_id = $data['user']['id_user'];
-        // $data['jamtangan'] =  $this->db->get('produk_jam')->result_array();
-
-        $this->load->library('pagination');
-        // Halaman Pagination
-        $config['total_rows'] = $this->modeluser->getdatapesanan($agen_id);
-        $config['base_url'] = 'http://localhost/time-zone/produk/pesanan';
-        // Total Baris Pagination
-        $config['per_page'] = 3;
-
-        // INISIALISASI Pagination
-        $this->pagination->initialize($config);
-        // END INISIALISASI
-
-        $data['start'] = $this->uri->segment(3);
-        $data['pesanan'] = $this->modeluser->tampilpesanan($config['per_page'], $data['start'], $agen_id);
-        // END PAGINATION
+        $data['pesanan'] = $this->modeluser->tampilpesanan($agen_id);
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
@@ -203,21 +174,8 @@ class Produk extends CI_Controller
         $data['title'] = 'Invoice';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $agen_id = $data['user']['id_user'];
+        $data['invoice'] = $this->modeluser->getdatainvoice($agen_id);
 
-        $this->load->library('pagination');
-        // Halaman Pagination
-        $config['total_rows'] = $this->modeluser->hitunginvoice($agen_id);
-        $config['base_url'] = 'http://localhost/time-zone/produk/invoice';
-        // Total Baris Pagination
-        $config['per_page'] = 3;
-
-        // INISIALISASI Pagination
-        $this->pagination->initialize($config);
-        // END INISIALISASI
-
-        $data['start'] = $this->uri->segment(3);
-        $data['invoice'] = $this->modeluser->getdatainvoice($config['per_page'], $data['start'], $agen_id);
-        // END PAGINATION
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');

@@ -26,14 +26,8 @@ class User extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['title'] = 'Edit Profile';
-        $this->form_validation->set_rules(
-            'nama',
-            'Nama',
-            'trim|required',
-            [
-                'required' => 'Nama Harus Diisi'
-            ]
-        );
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required', ['required' => 'Nama Harus Diisi']);
+
         $this->form_validation->set_rules(
             'notelp',
             'No Telephone',

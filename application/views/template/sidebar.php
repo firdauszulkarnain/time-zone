@@ -81,6 +81,3 @@
 
   </ul>
   <!-- End of Sidebar -->
-
-  <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
-  <div class="error" data-error="<?= $this->session->flashdata('error'); ?>"></div>

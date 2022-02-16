@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahsubmenu">Tambah Sub Menu Baru</a>
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped table-bordered text-center">
+                        <table class="table table-striped table-bordered text-center dt-responsive nowrap" id="mytabel" width="100%">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -35,7 +35,7 @@
                             <tbody>
                                 <?php foreach ($submenu as $sm) : ?>
                                     <tr>
-                                        <th scope="row"><?= 1 + $start; ?></th>
+                                        <th scope="row"></th>
                                         <td><?= $sm['title']; ?></td>
                                         <td><?= $sm['menu']; ?></td>
                                         <td><?= $sm['url']; ?></td>
@@ -50,13 +50,9 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php $start++; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <div class="mt-3 float-right">
-                            <?= $this->pagination->create_links(); ?>
-                        </div>
                     </div>
                 </div>
             </div>

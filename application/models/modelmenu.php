@@ -17,34 +17,26 @@ class modelmenu extends CI_Model
         $this->db->update('user_menu', $data);
     }
 
-    public function hitungdata()
+    public function getdatamenu()
     {
-        return $this->db->get('user_menu')->num_rows();
-    }
-
-    public function getdatamenu($limit, $start)
-    {
-        return $this->db->get('user_menu', $limit, $start)->result_array();
+        return $this->db->get('user_menu')->result_array();
     }
 
 
     // Sub Menu
-    public function getdatasubmenu($limit, $start)
+    public function getdatasubmenu()
     {
-        if (!$start)
-            $start = 0;
 
-        $tes = "SELECT `user_sub_menu`.*, `user_menu`.`menu`
-                FROM `user_sub_menu` JOIN `user_menu`
-                ON `user_sub_menu`.`menu_id` = `user_menu`.`id_menu` LIMIT  $start, $limit";
-        return $this->db->query($tes)->result_array();
+        $this->db->join('user_menu um', 'um.id_menu = usm.menu_id');
+        return $this->db->get('user_sub_menu usm')->result_array();
+
+        // $tes = "SELECT `user_sub_menu`.*, `user_menu`.`menu`
+        //         FROM `user_sub_menu` JOIN `user_menu`
+        //         ON `user_sub_menu`.`menu_id` = `user_menu`.`id_menu`";
+        // return $this->db->query($tes)->result_array();
     }
 
-    // Hitung Data Sub Menu
-    public function hitungdatasubmenu()
-    {
-        return $this->db->get('user_sub_menu')->num_rows();
-    }
+
 
     public function getdataupdatesubmenu($id)
     {

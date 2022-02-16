@@ -11,19 +11,19 @@
             <?= $this->session->flashdata('pesan'); ?>
             <div class="card mb-5">
                 <div class="card-body">
-                    <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahmenu">Tambah Menu Baru</a>
-                    <table class="table table-hover table-striped table-bordered text-center">
-                        <thead>
+                    <a href="#" class="btn btn-sm btn-primary mb-3 px-3" data-toggle="modal" data-target="#tambahmenu">Tambah Menu Baru</a>
+                    <table class="table table-striped table-bordered dt-responsive nowrap" id="mytabel" width="100%">
+                        <thead class="text-center">
                             <tr>
-                                <th scope="col">No</th>
+                                <th scope="col" width="10%">No</th>
                                 <th scope="col">Menu</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                             <?php foreach ($menu as $m) : ?>
                                 <tr>
-                                    <th scope="row"><?= 1 + $start; ?></th>
+                                    <th scope="row"></th>
                                     <td><?= $m['menu']; ?></td>
                                     <td>
                                         <!-- DELETE -->
@@ -34,21 +34,14 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <?php $start++; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <div class="mt-3 float-right">
-                        <?= $this->pagination->create_links(); ?>
-                    </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
-</div>
 </div>
 <!-- End of Main Content -->
 

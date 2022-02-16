@@ -9,7 +9,7 @@
             <div class="card py-3">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped table-bordered text-center">
+                        <table class="table table-striped table-bordered text-center dt-responsive nowrap" id="mytabel" width="100%">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -24,8 +24,8 @@
                             <tbody>
                                 <?php foreach ($invoice as $iv) : ?>
                                     <tr>
-                                        <th scope="row"><?= 1 + $start; ?></th>
-                                        <td><?= $iv['namajam']; ?></td>
+                                        <th scope="row"></th>
+                                        <td><?= $iv['nama']; ?></td>
                                         <td><?= $iv['qty']; ?></td>
                                         <td>Rp. <?= number_format($iv['total_harga'], 0, ',', '.') ?></td>
                                         <td><?= $iv['tgl_pemesanan']; ?></td>
@@ -36,13 +36,9 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <?php $start++; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <div class="mt-3 float-right">
-                            <?= $this->pagination->create_links(); ?>
-                        </div>
                     </div>
                 </div>
             </div>

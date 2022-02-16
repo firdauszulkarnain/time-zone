@@ -47,6 +47,12 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
 
+<!-- DATA TABLE -->
+<script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
 <!-- SWEETALERT2 -->
 <script src="<?= base_url() ?>assets/js/sweetalert2.all.min.js"></script>
 

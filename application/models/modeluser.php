@@ -38,14 +38,9 @@ class modeluser extends CI_Model
 
     // Agen
     // Produk
-    public function getdatajamuser($limit, $start, $agen_id)
+    public function getdatajamuser($agen_id)
     {
-        return $this->db->get_where('produk_jam', array('agen_id' => $agen_id), $limit, $start)->result_array();
-    }
-
-    public function hitungdataprodukjamuser($agen_id)
-    {
-        return $this->db->get_where('produk_jam', ['agen_id' => $agen_id])->num_rows();
+        return $this->db->get_where('produk_jam', array('agen_id' => $agen_id))->result_array();
     }
 
     public function tambahprodukjam($gambar, $agen_id)
@@ -78,21 +73,23 @@ class modeluser extends CI_Model
     }
 
     //Tampilkan Pesanan
-    public function tampilpesanan($limit, $start, $agen_id)
+    public function tampilpesanan($agen_id)
     {
-        if (!$start) {
-            $start = 0;
-        }
-
-        $query = "SELECT `pesanan`.*, `produk_jam`.`nama` as namajam 
-                FROM `pesanan` JOIN `produk_jam`
-                ON `pesanan`.`barang_id` = `produk_jam`.`id_produk`
-                WHERE `pesanan`.`agen_id` = $agen_id AND pesanan.status != 'Selesai' LIMIT  $start, $limit";
-        return $this->db->query($query)->result_array();
+        $this->db->join('produk_jam pj', 'pj.id_produk = ps.barang_id');
+        $this->db->where('ps.agen_id', $agen_id);
+        $this->db->where('ps.status !=', 'Selesai');
+        return $this->db->get('pesanan ps')->result_array();
     }
 
     public function detailpesanan($id)
     {
+        // $this->db->select('*');
+        // $this->db->join('user', 'user.id_user = ps.user_id');
+        // $this->db->join('kabupaten kab', 'kab.id_kab = user.id_kabupaten');
+        // $this->db->join('produk_jam pj', 'pj.id_produk = ps.barang_id');
+        // $this->db->where('ps.id', $id);
+        // return $this->db->get('pesanan ps')->row_array();
+
         $query = "SELECT `pesanan`.*, `user`.`nama` as namauser, `user`.`notelp` as notelp, `user`.`email` as email, `user`.`alamat` as alamatuser, `kabupaten`.`nama` as kabupaten, `produk_jam`.`nama` as namajam 
                 FROM `pesanan` JOIN `user` 
                 ON `pesanan`.`user_id` = `user`.`id_user`
@@ -133,25 +130,16 @@ class modeluser extends CI_Model
         }
     }
 
-    //Hitung Data Invoice
-    public function hitunginvoice($agen_id)
-    {
-        return $this->db->get_where('invoice', array('agen_id' => $agen_id))->num_rows();
-    }
+
 
     //Tampilkan Data Invoice
-    public function getdatainvoice($limit, $start, $agen_id)
+    public function getdatainvoice($agen_id)
     {
-        if (!$start) {
-            $start = 0;
-        }
-        $query = "SELECT `invoice`.*,`pesanan`.`qty` as qty, `produk_jam`.`nama` as namajam 
-        FROM `invoice` JOIN `pesanan`
-        ON `invoice`.`pesanan_id` = `pesanan`.`id`
-        JOIN `produk_jam`
-        ON `pesanan`.`barang_id` = `produk_jam`.`id_produk`
-        WHERE `invoice`.`agen_id` = $agen_id ORDER BY `invoice`.`id` DESC LIMIT  $start, $limit ";
-        return $this->db->query($query)->result_array();
+        $this->db->join('pesanan ps', 'ps.id = iv.pesanan_id');
+        $this->db->join('produk_jam pj', 'pj.id_produk = ps.barang_id');
+        $this->db->where('iv.agen_id', $agen_id);
+        $this->db->order_by('iv.id', 'desc');
+        return $this->db->get('invoice iv')->result_array();
     }
 
     //Detail Invoice
